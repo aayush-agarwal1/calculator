@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "calculator/calculatorpb";
+
+message SumRequest {
+  double num1 = 1;
+  double num2 = 2;
+}
+
+message SumResponse {
+  double sum = 1;
+}
+
+message PrimesTillRequest {
+  int64 limit = 1;
+}
+
+message PrimesTillResponse {
+  int64 primeNum = 1;
+}
+
+message AverageRequest {
+  int64 num = 1;
+}
+
+message AverageResponse {
+  int64 avg = 1;
+}
+
+message MaxNumbersRequest {
+  int64 num  = 1;
+}
+
+message MaxNumbersResponse {
+  int64 max = 1;
+}
+
+service CalculatorService{
+
+  rpc Sum(SumRequest) returns (SumResponse) {};
+
+  rpc PrimesTill(PrimesTillRequest) returns (stream PrimesTillResponse) {};
+
+  rpc Average(stream AverageRequest) returns (AverageResponse) {};
+
+  rpc MaxNumbers(stream MaxNumbersRequest) returns (stream MaxNumbersResponse) {};
+}

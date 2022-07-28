@@ -130,6 +130,7 @@ func main() {
 	s := grpc.NewServer()
 	calculatorpb.RegisterCalculatorServiceServer(s, &server{})
 
+	log.Println("Initiating Server")
 	if err = s.Serve(listen); err != nil {
 		log.Fatalf("failed to serve : %v", err)
 	}

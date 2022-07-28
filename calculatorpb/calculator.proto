@@ -13,27 +13,27 @@ message SumResponse {
   double sum = 1;
 }
 
-message PrimesTillRequest {
+message PrimeNumbersRequest {
   int64 limit = 1;
 }
 
-message PrimesTillResponse {
+message PrimeNumbersResponse {
   int64 primeNum = 1;
 }
 
-message AverageRequest {
+message ComputeAverageRequest {
   int64 num = 1;
 }
 
-message AverageResponse {
+message ComputeAverageResponse {
   int64 avg = 1;
 }
 
-message MaxNumbersRequest {
+message FindMaxNumberRequest {
   int64 num  = 1;
 }
 
-message MaxNumbersResponse {
+message FindMaxNumberResponse {
   int64 max = 1;
 }
 
@@ -41,9 +41,9 @@ service CalculatorService{
 
   rpc Sum(SumRequest) returns (SumResponse) {};
 
-  rpc PrimesTill(PrimesTillRequest) returns (stream PrimesTillResponse) {};
+  rpc PrimeNumbers(PrimeNumbersRequest) returns (stream PrimeNumbersResponse) {};
 
-  rpc Average(stream AverageRequest) returns (AverageResponse) {};
+  rpc ComputeAverage(stream ComputeAverageRequest) returns (ComputeAverageResponse) {};
 
-  rpc MaxNumbers(stream MaxNumbersRequest) returns (stream MaxNumbersResponse) {};
+  rpc FindMaxNumber(stream FindMaxNumberRequest) returns (stream FindMaxNumberResponse) {};
 }
